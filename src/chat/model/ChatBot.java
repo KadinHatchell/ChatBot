@@ -25,6 +25,9 @@ public class Chatbot
 	public void ChatBot(String userName)
 	{
 		memesList = new ArrayList<String>();
+		politicalTopicList = new ArrayList<String>();
+		this.userName = new String(userName);
+		this.content = new String("topoic area of interest");
 
 	}
 
@@ -37,6 +40,7 @@ public class Chatbot
 	{
 
 	}
+	
 
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied
@@ -47,7 +51,14 @@ public class Chatbot
 	 */
 	public boolean lengthChecker(String currentInput)
 	{
-		return false;
+		boolean hasLength = false;
+		
+		if (currentInput != null && !currentInput.equals(""))
+		{
+			hasLength = true;
+		}
+		
+		return hasLength;
 	}
 
 	/**

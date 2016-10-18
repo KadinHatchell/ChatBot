@@ -21,7 +21,7 @@ public class ChatbotTest
 	public void setUp() throws Exception
 	{
 		userName = "test";
-		sampleBot = new Chatbot(userName);
+		sampleBot = new Chatbot();
 	}
 
 	@After
@@ -121,7 +121,8 @@ public class ChatbotTest
 		assertFalse("Political Topic check - wrong date", sampleBot.getPoliticalTopicList().contains("11/4/16"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("11/8/16"));
 		assertFalse("Political Topic check - case", sampleBot.getPoliticalTopicList().contains("republican"));
-		assertFalse("Political Topic check - case", sampleBot.getPoliticalTopicList().contains("democrat"));				assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("liberal"));
+		assertFalse("Political Topic check - case", sampleBot.getPoliticalTopicList().contains("democrat"));				
+		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("liberal"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("conservative"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Clinton"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Trump"));
