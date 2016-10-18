@@ -41,6 +41,10 @@ public class Chatbot
 
 	}
 	
+	private void keyboardMashChecker()
+	{
+		
+	}
 
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied
@@ -84,6 +88,16 @@ public class Chatbot
 	 * @return Whether the String is contained in the ArrayList.
 	 */
 	public boolean politicalTopicChecker(String currentInput)
+	{
+		return false;
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		return false;
+	}
+	
+	public boolean inputHTMLChecker(String currentInput)
 	{
 		return false;
 	}
@@ -140,6 +154,7 @@ public class Chatbot
 	{
 		return politicalTopicList;
 	}
+	
 
 	/**
 	 * Updates the content area for this Chatbot instance.

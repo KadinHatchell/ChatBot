@@ -21,7 +21,7 @@ public class ChatbotTest
 	public void setUp() throws Exception
 	{
 		userName = "test";
-		sampleBot = new Chatbot();
+		sampleBot = new Chatbot(userName);
 	}
 
 	@After
@@ -58,6 +58,7 @@ public class ChatbotTest
 	{
 		assertNotNull("Constructor functions and getters work again", sampleBot.getMemesList());
 	}
+	
 
 	@Test
 	public void testGetPoliticalTopicList()
