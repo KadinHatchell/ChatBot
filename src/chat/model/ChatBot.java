@@ -22,7 +22,7 @@ public class Chatbot
 	 * @param userName
 	 *            The username for the chatbot.
 	 */
-	public void ChatBot(String userName)
+	public Chatbot(String userName)
 	{
 		memesList = new ArrayList<String>();
 		politicalTopicList = new ArrayList<String>();
