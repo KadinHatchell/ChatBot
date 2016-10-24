@@ -31,6 +31,8 @@ public class Chatbot
 		politicalTopicList = new ArrayList<String>();
 		this.userName = new String(userName);
 		this.content = new String("topoic area of interest");
+		buildMemesList();
+		buildPoliticalTopicsList();
 
 	}
 
@@ -39,46 +41,46 @@ public class Chatbot
 	 */
 	private void buildMemesList()
 	{
-		this.memesList.add("doge");
-		this.memesList.add("cute animal");
-		this.memesList.add("cute animals");
-		this.memesList.add("grumpy cat");
-		this.memesList.add("dat boi");
-		this.memesList.add("willy wonka");
-		this.memesList.add("harambe");
-		this.memesList.add("john cena");
-		this.memesList.add("bobby hill");
-		this.memesList.add("pupper");
-		this.memesList.add("bite my shiny metal ass");
-		this.memesList.add("deez nuts");
-		this.memesList.add("got em");
-		this.memesList.add("roses are red");
-		this.memesList.add("pepe = terrorist");
-		this.memesList.add("pepe");
-		this.memesList.add("ALIENS");
-		this.memesList.add("shrek");
-		this.memesList.add("ken bone");
-		this.memesList.add("jacob");
-		this.memesList.add("leafyishere");
+		memesList.add("doge");
+		memesList.add("cute animal");
+		memesList.add("cute animals");
+		memesList.add("grumpy cat");
+		memesList.add("dat boi");
+		memesList.add("willy wonka");
+		memesList.add("harambe");
+		memesList.add("john cena");
+		memesList.add("bobby hill");
+		memesList.add("pupper");
+		memesList.add("bite my shiny metal ass");
+		memesList.add("deez nuts");
+		memesList.add("got em");
+		memesList.add("roses are red");
+		memesList.add("pepe = terrorist");
+		memesList.add("pepe");
+		memesList.add("ALIENS");
+		memesList.add("shrek");
+		memesList.add("ken bone");
+		memesList.add("jacob");
+		memesList.add("leafyishere");
 		
 		
 	}
 
 	private void buildPoliticalTopicsList()
 	{
-		this.memesList.add("Democrat");
-		this.memesList.add("Repulican");
-		this.memesList.add("11/8/16");
-		this.memesList.add("liberal");
-		this.memesList.add("conservative");
-		this.memesList.add("Clinton");
-		this.memesList.add("Trump");
-		this.memesList.add("Kaine");
-		this.memesList.add("Pence");
-		this.memesList.add("Stein");
-		this.memesList.add("Johnson");
-		this.memesList.add("election");
-		this.memesList.add("build a wall");
+		politicalTopicList.add("Democrat");
+		politicalTopicList.add("Repulican");
+		politicalTopicList.add("11/8/16");
+		politicalTopicList.add("liberal");
+		politicalTopicList.add("conservative");
+		politicalTopicList.add("Clinton");
+		politicalTopicList.add("Trump");
+		politicalTopicList.add("Kaine");
+		politicalTopicList.add("Pence");
+		politicalTopicList.add("Stein");
+		politicalTopicList.add("Johnson");
+		politicalTopicList.add("election");
+		politicalTopicList.add("build a wall");
 		
 
 	}
@@ -139,8 +141,8 @@ public class Chatbot
 	public boolean politicalTopicChecker(String currentInput)
 	{
 		boolean isPolitical = false;
-		for (String politicalTopic : politicalTopicList){
-			if(currentInput.toLowerCase().contains(politicalTopic.toLowerCase())){;
+		for (String buildPoliticalTopiclist : politicalTopicList){
+			if(currentInput.equals(buildPoliticalTopiclist)){;
 				isPolitical = true;
 			}
 		}
@@ -168,9 +170,9 @@ public class Chatbot
 	public boolean memeChecker(String currentInput)
 	{
 		boolean isMeme = false;
-		for (String meme : memesList)
+		for (String buildmemelist : memesList)
 		{
-			if (currentInput.toLowerCase().contains(meme.toLowerCase()))
+			if (currentInput.equals(buildmemelist))
 			{
 				isMeme = true;
 			}
