@@ -1,5 +1,8 @@
 package chat.model;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 
 /**
@@ -31,13 +34,52 @@ public class Chatbot
 
 	}
 
+	/**
+	 * Builds meme list
+	 */
 	private void buildMemesList()
 	{
-
+		this.memesList.add("doge");
+		this.memesList.add("cute animal");
+		this.memesList.add("cute animals");
+		this.memesList.add("grumpy cat");
+		this.memesList.add("dat boi");
+		this.memesList.add("willy wonka");
+		this.memesList.add("harambe");
+		this.memesList.add("john cena");
+		this.memesList.add("bobby hill");
+		this.memesList.add("pupper");
+		this.memesList.add("bite my shiny metal ass");
+		this.memesList.add("deez nuts");
+		this.memesList.add("got em");
+		this.memesList.add("roses are red");
+		this.memesList.add("pepe = terrorist");
+		this.memesList.add("pepe");
+		this.memesList.add("ALIENS");
+		this.memesList.add("shrek");
+		this.memesList.add("ken bone");
+		this.memesList.add("jacob");
+		this.memesList.add("leafyishere");
+		
+		
 	}
 
 	private void buildPoliticalTopicsList()
 	{
+		this.memesList.add("Democrat");
+		this.memesList.add("Repulican");
+		this.memesList.add("11/8/16");
+		this.memesList.add("liberal");
+		this.memesList.add("conservative");
+		this.memesList.add("Clinton");
+		this.memesList.add("Trump");
+		this.memesList.add("Kaine");
+		this.memesList.add("Pence");
+		this.memesList.add("Stein");
+		this.memesList.add("Johnson");
+		this.memesList.add("election");
+		this.memesList.add("build a wall");
+		
 
 	}
 	
@@ -75,7 +117,14 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+
+		if (currentInput.contains(content))
+		{
+			hasContent = true;
+		}
+
+		return hasContent;
 	}
 
 	/**
@@ -89,7 +138,13 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean isPolitical = false;
+		for (String politicalTopic : politicalTopicList){
+			if(currentInput.toLowerCase().contains(politicalTopic.toLowerCase())){;
+				isPolitical = true;
+			}
+		}
+		return isPolitical;
 	}
 	
 	public boolean keyboardMashChecker(String currentInput)
@@ -112,7 +167,16 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean isMeme = false;
+		for (String meme : memesList)
+		{
+			if (currentInput.toLowerCase().contains(meme.toLowerCase()))
+			{
+				isMeme = true;
+			}
+		}
+
+		return isMeme;
 	}
 
 	/**
