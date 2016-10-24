@@ -30,7 +30,7 @@ public class Chatbot
 		memesList = new ArrayList<String>();
 		politicalTopicList = new ArrayList<String>();
 		this.userName = new String(userName);
-		this.content = new String("topoic area of interest");
+		this.content = "content";
 		buildMemesList();
 		buildPoliticalTopicsList();
 
@@ -62,17 +62,17 @@ public class Chatbot
 		memesList.add("ken bone");
 		memesList.add("jacob");
 		memesList.add("leafyishere");
-		
-		
+
 	}
 
 	private void buildPoliticalTopicsList()
 	{
 		politicalTopicList.add("Democrat");
-		politicalTopicList.add("Repulican");
+		politicalTopicList.add("Republican");
 		politicalTopicList.add("11/8/16");
 		politicalTopicList.add("liberal");
 		politicalTopicList.add("conservative");
+		politicalTopicList.add("Hillary");
 		politicalTopicList.add("Clinton");
 		politicalTopicList.add("Trump");
 		politicalTopicList.add("Kaine");
@@ -81,13 +81,17 @@ public class Chatbot
 		politicalTopicList.add("Johnson");
 		politicalTopicList.add("election");
 		politicalTopicList.add("build a wall");
+		politicalTopicList.add("lets revote");
+		politicalTopicList.add("couldve done better");
+		politicalTopicList.add("Donald");
+		politicalTopicList.add("Gary");
 		
 
 	}
-	
+
 	private void keyboardMashChecker()
 	{
-		
+
 	}
 
 	/**
@@ -100,12 +104,12 @@ public class Chatbot
 	public boolean lengthChecker(String currentInput)
 	{
 		boolean hasLength = false;
-		
+
 		if (currentInput != null && !currentInput.equals(""))
 		{
 			hasLength = true;
 		}
-		
+
 		return hasLength;
 	}
 
@@ -141,19 +145,21 @@ public class Chatbot
 	public boolean politicalTopicChecker(String currentInput)
 	{
 		boolean isPolitical = false;
-		for (String buildPoliticalTopiclist : politicalTopicList){
-			if(currentInput.equals(buildPoliticalTopiclist)){;
+		for (String buildPoliticalTopiclist : politicalTopicList)
+		{
+			if (currentInput.equals(buildPoliticalTopiclist))
+			{
 				isPolitical = true;
 			}
 		}
 		return isPolitical;
 	}
-	
+
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		return false;
 	}
-	
+
 	public boolean inputHTMLChecker(String currentInput)
 	{
 		return false;
@@ -220,7 +226,6 @@ public class Chatbot
 	{
 		return politicalTopicList;
 	}
-	
 
 	/**
 	 * Updates the content area for this Chatbot instance.
@@ -230,6 +235,7 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
+		this.content = content;
 
 	}
 }
