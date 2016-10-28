@@ -33,6 +33,7 @@ public class Chatbot
 		this.content = "content";
 		buildMemesList();
 		buildPoliticalTopicsList();
+		keyboardMashChecker();
 
 	}
 
@@ -91,6 +92,7 @@ public class Chatbot
 
 	private void keyboardMashChecker()
 	{
+		
 
 	}
 
