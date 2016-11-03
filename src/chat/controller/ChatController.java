@@ -16,7 +16,7 @@ public class ChatController
 	
 	public void start(){
 		
-		String response = "User";
+		String response = " ";
 		
 		while(stupidBot.lengthChecker(response))
 		{

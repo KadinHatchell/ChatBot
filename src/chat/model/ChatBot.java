@@ -16,12 +16,12 @@ public class Chatbot
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
+	private ArrayList<String> keyboardMashChecker;
 	private String userName;
 	private String content;
 
 	/**
 	 * Creates an instance of the Chatbot with the supplied username.
-	 * 
 	 * @param userName
 	 *            The username for the chatbot.
 	 */
@@ -33,7 +33,7 @@ public class Chatbot
 		this.content = "content";
 		buildMemesList();
 		buildPoliticalTopicsList();
-		keyboardMashChecker();
+		buildKeyboardMashChecker();
 
 	}
 
@@ -90,8 +90,9 @@ public class Chatbot
 
 	}
 
-	private void keyboardMashChecker()
+	private void buildKeyboardMashChecker()
 	{
+		keyboardMashChecker.add("sfg");
 		
 
 	}
@@ -126,8 +127,10 @@ public class Chatbot
 	public boolean contentChecker(String currentInput)
 	{
 		boolean hasContent = false;
+		String test = "#Ç";
+		System.out.println(test.toLowerCase());
 
-		if (currentInput.contains(content))
+		if (currentInput.toLowerCase().contains(content))
 		{
 			hasContent = true;
 		}
@@ -158,8 +161,14 @@ public class Chatbot
 	}
 
 	public boolean keyboardMashChecker(String currentInput)
+	{boolean isKeyboard = false;
+	for (String keyboardMashChecker : keyboardMashChecker)
 	{
-		return false;
+		if (currentInput.contains(keyboardMashChecker))
+		{
+			isKeyboard = false;
+		}
+	}
 	}
 
 	public boolean inputHTMLChecker(String currentInput)
@@ -208,6 +217,7 @@ public class Chatbot
 	{
 		return content;
 	}
+	
 
 	/**
 	 * Getter method for the memesList object.
@@ -227,6 +237,11 @@ public class Chatbot
 	public ArrayList<String> getPoliticalTopicList()
 	{
 		return politicalTopicList;
+	}
+	
+	public ArrayList<String> getKeyboardMashChecker()
+	{
+		return keyboardMashChecker;
 	}
 
 	/**
