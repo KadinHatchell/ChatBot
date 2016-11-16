@@ -59,7 +59,6 @@ public class ChatbotTest
 		assertNotNull("Constructor functions and getters work again", sampleBot.getMemesList());
 	}
 	
-
 	@Test
 	public void testGetPoliticalTopicList()
 	{
@@ -135,7 +134,6 @@ public class ChatbotTest
 
 	}
 
-	
 	@Test
 	public void testKeyboardMashChecker()
 	{

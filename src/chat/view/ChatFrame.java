@@ -23,7 +23,7 @@ public class ChatFrame extends JFrame
 	{
 		this.setContentPane(basePanel);
 		this.setTitle("GUI");
-		this.setSize(new Dimension(500, 500));
+		this.setSize(new Dimension(475, 600));
 		this.setVisible(true);
 	}
 
