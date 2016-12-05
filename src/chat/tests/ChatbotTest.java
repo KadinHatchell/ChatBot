@@ -9,7 +9,7 @@ import chat.model.Chatbot;
 
 /**
  * Class designed for testing the Chatbot object with JUnit. 
- * @author Cody Henrichsen
+ * @author Kadin Hatchell
  * @version 1.5
  */
 public class ChatbotTest
@@ -59,7 +59,6 @@ public class ChatbotTest
 		assertNotNull("Constructor functions and getters work again", sampleBot.getMemesList());
 	}
 	
-
 	@Test
 	public void testGetPoliticalTopicList()
 	{
@@ -135,7 +134,6 @@ public class ChatbotTest
 
 	}
 
-	
 	@Test
 	public void testKeyboardMashChecker()
 	{

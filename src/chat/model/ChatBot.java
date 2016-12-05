@@ -17,7 +17,10 @@ public class Chatbot
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private ArrayList<String> keyboardMashChecker;
-	private String userName;
+	private ArrayList<String> inputHTMLChecker;
+	private ArrayList<String> twitterChecker;
+	private ArrayList<String> quitChecker;
+ 	private String userName;
 	private String content;
 
 	/**
@@ -29,11 +32,18 @@ public class Chatbot
 	{
 		memesList = new ArrayList<String>();
 		politicalTopicList = new ArrayList<String>();
+		keyboardMashChecker = new ArrayList<String>();
+		inputHTMLChecker = new ArrayList<String>();
+		twitterChecker = new ArrayList<String>();
+		quitChecker = new ArrayList<String>();
 		this.userName = new String(userName);
 		this.content = "content";
 		buildMemesList();
 		buildPoliticalTopicsList();
 		buildKeyboardMashChecker();
+		buildInputHTMLChecker();
+		buildTwitterChecker();
+		buildQuitChecker();
 
 	}
 
@@ -65,7 +75,9 @@ public class Chatbot
 		memesList.add("leafyishere");
 
 	}
-
+	/**
+	 * Builds politicalTopics list
+	 */
 	private void buildPoliticalTopicsList()
 	{
 		politicalTopicList.add("Democrat");
@@ -89,12 +101,45 @@ public class Chatbot
 		
 
 	}
-
+	/**
+	 * Builds keyboardMash list
+	 */
 	private void buildKeyboardMashChecker()
 	{
-		keyboardMashChecker.add("sfg");
+		keyboardMashChecker.add("S.D.F.");
+		keyboardMashChecker.add("derf");
+		keyboardMashChecker.add("sdf");
+		keyboardMashChecker.add("dfg");
+		keyboardMashChecker.add("cvb");
+		keyboardMashChecker.add(",./");
+		
 		
 
+	}
+	/**
+	 * Builds HTML list
+	 */
+	private void buildInputHTMLChecker()
+	{
+		inputHTMLChecker.add("<B>  </B>");
+		inputHTMLChecker.add("<I> sdadas </i>");
+		inputHTMLChecker.add("<P>");
+		inputHTMLChecker.add("<A HREF=\"sdfs.html\"> </a>");
+		
+	}
+	/**
+	 * Builds twitter list
+	 */
+	private void buildTwitterChecker()
+	{
+		twitterChecker.add("#dw35 f");
+		twitterChecker.add("@d4d sretsf ");
+	}
+	
+	private void buildQuitChecker()
+	{
+		quitChecker.add("quit");
+		
 	}
 
 	/**
@@ -139,44 +184,6 @@ public class Chatbot
 	}
 
 	/**
-	 * Checks if supplied String matches ANY of the topics in the
-	 * politicalTopicsList. Returns true if it does find a match and false if it
-	 * does not match.
-	 * 
-	 * @param currentInput
-	 *            The supplied String to be checked.
-	 * @return Whether the String is contained in the ArrayList.
-	 */
-	public boolean politicalTopicChecker(String currentInput)
-	{
-		boolean isPolitical = false;
-		for (String buildPoliticalTopiclist : politicalTopicList)
-		{
-			if (currentInput.equals(buildPoliticalTopiclist))
-			{
-				isPolitical = true;
-			}
-		}
-		return isPolitical;
-	}
-
-	public boolean keyboardMashChecker(String currentInput)
-	{boolean isKeyboard = false;
-	for (String keyboardMashChecker : keyboardMashChecker)
-	{
-		if (currentInput.contains(keyboardMashChecker))
-		{
-			isKeyboard = false;
-		}
-	}
-	}
-
-	public boolean inputHTMLChecker(String currentInput)
-	{
-		return false;
-	}
-
-	/**
 	 * Checks to see that the supplied String value is in the current memesList
 	 * variable.
 	 * 
@@ -197,6 +204,155 @@ public class Chatbot
 
 		return isMeme;
 	}
+	
+	/**
+	 * Checks if supplied String matches ANY of the topics in the politicalTopicsList.
+	 * Returns true if it does find a match and false if it does not match.
+	 * 
+	 * @param currentInput
+	 *            The supplied String to be checked.
+	 * @return Whether the String is contained in the ArrayList.
+	 */
+	public boolean politicalTopicChecker(String currentInput)
+	{
+		boolean isPolitical = false;
+		for (String buildPoliticalTopiclist : politicalTopicList)
+		{
+			if (currentInput.equals(buildPoliticalTopiclist))
+			{
+				isPolitical = true;
+			}
+		}
+		return isPolitical;
+	}
+	
+	/**
+	 * Checks if supplied String matches ANY of the topics in the keybiardMashChecker.
+	 * Returns true if it does find a match and false if it does not match.
+	 * 
+	 * @param currentInput
+	 *            The supplied String to be checked.
+	 * @return Whether the String is contained in the ArrayList.
+	 */
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean isKeyboard = false;
+		for (String keyboardMashChecker : keyboardMashChecker)
+		{
+			if (currentInput.contains(keyboardMashChecker))
+			{
+				isKeyboard = true;
+			}
+		}
+		return isKeyboard;
+	}
+	
+	/**
+	 * Checks if supplied String matches ANY of the topics in the inputHTMLChecker.
+	 * Returns true if it does find a match and false if it does not match.
+	 * 
+	 * @param currentInput
+	 *            The supplied String to be checked.
+	 * @return Whether the String is contained in the ArrayList.
+	 */
+//	public boolean inputHTMLChecker(String currentInput)
+//	{
+//		boolean isHTML = false;
+//		
+//		int open = currentInput.indexOf("<");
+//		int close = currentInput.indexOf(">");
+//		String tag = currentInput.substring(open +1, close);
+//		int secOpen = currentInput.indexOf("</");
+//		int secClose = currentInput.indexOf(">", secOpen);
+//		String tag2 = currentInput.substring(secOpen +2, secClose);
+//		int hasTag2 = currentInput.indexOf("</"+tag2+">");
+//		
+//		if (open == -1 && close == -1)
+//		{
+//			isHTML = false;
+//		}
+//		
+//		else if (currentInput.contains("<P>"))
+//		{
+//			isHTML = true;
+//		}
+//		
+//		else if (hasTag2 == -1)
+//		{
+//			isHTML = false;
+//		}
+//	
+//		else if (currentInput.equals("<A HREF=\"sdfs.html\"> </a>"))
+//		{
+//			isHTML = true;
+//		}
+//		
+//		else if (currentInput.contains("< >") || currentInput.contains("<>"))
+//		{
+//			isHTML = false;
+//		}
+//		
+//		else if (tag.equalsIgnoreCase(tag2))
+//		{
+//			isHTML = true;
+//		}
+//		
+//
+//		
+//		return isHTML;
+//	}
+
+	
+	/**
+	 * Checks if supplied String matches ANY of the topics in the twitterChecker
+	 * Returns true if it does find a match and false if it does not match.
+	 * 
+	 * @param currentInput
+	 *            The supplied String to be checked.
+	 * @return Whether the String is contained in the ArrayList.
+	 */
+	public boolean twitterChecker(String currentInput)
+	{
+		boolean tweetChecker = false;
+		int hashIndex = -99;
+		int atIndex = -99;
+	
+		hashIndex = currentInput.indexOf("#");
+		atIndex = currentInput.indexOf("@");
+		
+		if (hashIndex == -1 && atIndex == -1)
+		{
+			tweetChecker = false;
+		}
+		else
+		{
+			if (!currentInput.substring(hashIndex +1, hashIndex +2).equals(" ") || !currentInput.substring(atIndex +1,  atIndex +2).equals(" "))
+			{
+				tweetChecker = true;
+			}
+		}
+		return tweetChecker;
+		
+	}
+	
+	public boolean  quitChecker(String currentInput)
+	{
+		boolean qCheck = false;
+		String quit = "quit";
+		
+		if (currentInput.equals(quit))
+		{
+			qCheck = true;
+			
+		}
+		else
+		{
+			qCheck = false;
+		}
+		return qCheck;
+	}
+
+	
 
 	/**
 	 * Returns the username of this Chatbot instance.
@@ -218,7 +374,6 @@ public class Chatbot
 		return content;
 	}
 	
-
 	/**
 	 * Getter method for the memesList object.
 	 * 
@@ -228,7 +383,6 @@ public class Chatbot
 	{
 		return memesList;
 	}
-
 	/**
 	 * Getter method for the politicalTopicList object.
 	 * 
@@ -238,10 +392,37 @@ public class Chatbot
 	{
 		return politicalTopicList;
 	}
-	
+	/**
+	 * Getter method for the keyboardMashChecker object.
+	 * 
+	 * @return The reference to the keyboardMashChecker list.
+	 */
 	public ArrayList<String> getKeyboardMashChecker()
 	{
 		return keyboardMashChecker;
+	}
+	/**
+	 * Getter method for the inputHTMLChecker object.
+	 * 
+	 * @return The reference to the inputHTMLChecker list.
+	 */
+	public ArrayList<String> inputHTMLChecker()
+	{
+		return inputHTMLChecker;
+	}
+	/**
+	 * Getter method for the twitterChecker object.
+	 * 
+	 * @return The reference to the twitterChecker list.
+	 */
+	public ArrayList<String> twitterChecker()
+	{
+		return twitterChecker;
+	}
+	
+	public ArrayList<String> quitChecker()
+	{
+		return quitChecker;
 	}
 
 	/**
