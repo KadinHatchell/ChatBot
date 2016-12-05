@@ -138,6 +138,7 @@ public class Chatbot
 	
 	private void buildQuitChecker()
 	{
+		quitChecker.add("quit");
 		
 	}
 
@@ -333,6 +334,23 @@ public class Chatbot
 		return tweetChecker;
 		
 	}
+	
+	public boolean  quitChecker(String currentInput)
+	{
+		boolean qCheck = false;
+		String quit = "quit";
+		
+		if (currentInput.equals(quit))
+		{
+			qCheck = true;
+			
+		}
+		else
+		{
+			qCheck = false;
+		}
+		return qCheck;
+	}
 
 	
 
@@ -400,6 +418,11 @@ public class Chatbot
 	public ArrayList<String> twitterChecker()
 	{
 		return twitterChecker;
+	}
+	
+	public ArrayList<String> quitChecker()
+	{
+		return quitChecker;
 	}
 
 	/**

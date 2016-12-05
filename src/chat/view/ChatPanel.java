@@ -38,7 +38,6 @@ public class ChatPanel extends JPanel
 	
 	private void setupChatDisplay()
 	{
-		chatDisplay.setEditable(false);
 		chatDisplay.setEnabled(false);
 		chatDisplay.setWrapStyleWord(true);
 		chatDisplay.setLineWrap(true);
@@ -46,7 +45,7 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setBackground(Color.GREEN);
+		this.setBackground(Color.BLUE);
 		this.add(chatButton);
 		this.add(chatDisplay);
 		this.add(chatField);
@@ -55,7 +54,7 @@ public class ChatPanel extends JPanel
 	}
 	private void setupLayout()
 	{
-		chatDisplay.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		chatDisplay.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		chatField.setHorizontalAlignment(SwingConstants.CENTER);
 		chatField.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		baseLayout.putConstraint(SpringLayout.NORTH, chatDisplay, 6, SpringLayout.SOUTH, chatField);
