@@ -7,7 +7,7 @@ public class ChatbotViewer
 	
 	public String collectResponse(String question)
 	{
-		String response = " ";
+		String response = "";
 		
 		response = JOptionPane.showInputDialog(null, question);
 		

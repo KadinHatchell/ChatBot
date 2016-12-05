@@ -255,52 +255,59 @@ public class Chatbot
 	 *            The supplied String to be checked.
 	 * @return Whether the String is contained in the ArrayList.
 	 */
-//	public boolean inputHTMLChecker(String currentInput)
-//	{
-//		boolean isHTML = false;
-//		
-//		int open = currentInput.indexOf("<");
-//		int close = currentInput.indexOf(">");
-//		String tag = currentInput.substring(open +1, close);
-//		int secOpen = currentInput.indexOf("</");
-//		int secClose = currentInput.indexOf(">", secOpen);
-//		String tag2 = currentInput.substring(secOpen +2, secClose);
-//		int hasTag2 = currentInput.indexOf("</"+tag2+">");
-//		
-//		if (open == -1 && close == -1)
-//		{
-//			isHTML = false;
-//		}
-//		
-//		else if (currentInput.contains("<P>"))
-//		{
-//			isHTML = true;
-//		}
-//		
-//		else if (hasTag2 == -1)
-//		{
-//			isHTML = false;
-//		}
-//	
-//		else if (currentInput.equals("<A HREF=\"sdfs.html\"> </a>"))
-//		{
-//			isHTML = true;
-//		}
-//		
-//		else if (currentInput.contains("< >") || currentInput.contains("<>"))
-//		{
-//			isHTML = false;
-//		}
-//		
-//		else if (tag.equalsIgnoreCase(tag2))
-//		{
-//			isHTML = true;
-//		}
-//		
-//
-//		
-//		return isHTML;
-//	}
+	public boolean inputHTMLChecker(String currentInput)
+	{
+		boolean htmlChecker = false;
+		
+		int open = currentInput.indexOf("<");
+		int close = currentInput.indexOf(">");
+		if (open == -1 || close == -1)
+		{
+			return htmlChecker;
+		}
+		String tag = currentInput.substring(open +1, close);
+		int hasTag = currentInput.indexOf("<"+tag+">");
+		int secondOpen = currentInput.indexOf("</");
+		int secondClose = currentInput.indexOf(">", secondOpen);
+		String tag2 = currentInput.substring(secondOpen +2, secondClose);
+		int hasTag2 = currentInput.indexOf("</"+tag2+">");
+		
+		int hrefTag = currentInput.indexOf("=\"");
+		int closeHREFTag= currentInput.indexOf("\"", hrefTag);
+		
+		if (open == -1 && close == -1)
+		{
+			htmlChecker = false;
+		}
+	
+		else if (currentInput.contains("< >") || currentInput.contains("<>"))
+		{
+			htmlChecker = false;
+		}
+		
+		else if (currentInput.equals("<P>"))
+		{
+			htmlChecker = true;
+		}
+		
+		else if (hasTag2 == -1)
+		{
+			htmlChecker = false;
+		}
+		
+		else if (tag.equalsIgnoreCase(tag2))
+		{
+			htmlChecker = true;
+		}
+		
+		else if (hrefTag != -1 && currentInput.substring(open +1, hrefTag ).equals("A HREF") && closeHREFTag != -1 )
+		{
+			htmlChecker = true;
+		}
+		
+		
+		return htmlChecker;
+	}
 
 	
 	/**
@@ -335,21 +342,24 @@ public class Chatbot
 		
 	}
 	
-	public boolean  quitChecker(String currentInput)
+	/*
+	 * checks to see if user wants to quit the program.
+	 * if quit is typed the it returns true and the quit method will execute.
+	 */
+	public boolean quitChecker(String currentInput)
 	{
-		boolean qCheck = false;
-		String quit = "quit";
+		boolean checkQuit = false;
 		
-		if (currentInput.equals(quit))
+		if (currentInput.equals("exit"))
 		{
-			qCheck = true;
-			
+			checkQuit = false;
 		}
-		else
+		if (currentInput.equals("quit"))
 		{
-			qCheck = false;
+			checkQuit = true;
 		}
-		return qCheck;
+		
+		return checkQuit;
 	}
 
 	

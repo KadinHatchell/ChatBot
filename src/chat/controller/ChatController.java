@@ -45,17 +45,17 @@ public class ChatController
 			{
 				checkInput += "\nThat's just mumbo jumbo";
 			}
-			// if(stupidBot.inputHTMLChecker(input))
-			// {
-			// checkInput += "\nHTML";
-			// }
+			if(stupidBot.inputHTMLChecker(input))
+			{
+			checkInput += "\nHTML";
+			}
 			if (stupidBot.twitterChecker(input))
 			{
 				checkInput += "\nCool tweet ma dude";
 			}
 			if (!stupidBot.lengthChecker(checkInput))
 			{
-				checkInput = "I have no idea what you mean about " + input;
+				checkInput = "I have no idea what you mean";
 			}
 			int canBeRandom = (int) (Math.random() * 2);
 			if (canBeRandom % 2 == 0)
