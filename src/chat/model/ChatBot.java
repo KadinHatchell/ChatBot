@@ -135,7 +135,9 @@ public class Chatbot
 		twitterChecker.add("#dw35 f");
 		twitterChecker.add("@d4d sretsf ");
 	}
-	
+	/**
+	 * Builds Quit list
+	 */
 	private void buildQuitChecker()
 	{
 		quitChecker.add("quit");
@@ -255,52 +257,59 @@ public class Chatbot
 	 *            The supplied String to be checked.
 	 * @return Whether the String is contained in the ArrayList.
 	 */
-//	public boolean inputHTMLChecker(String currentInput)
-//	{
-//		boolean isHTML = false;
-//		
-//		int open = currentInput.indexOf("<");
-//		int close = currentInput.indexOf(">");
-//		String tag = currentInput.substring(open +1, close);
-//		int secOpen = currentInput.indexOf("</");
-//		int secClose = currentInput.indexOf(">", secOpen);
-//		String tag2 = currentInput.substring(secOpen +2, secClose);
-//		int hasTag2 = currentInput.indexOf("</"+tag2+">");
-//		
-//		if (open == -1 && close == -1)
-//		{
-//			isHTML = false;
-//		}
-//		
-//		else if (currentInput.contains("<P>"))
-//		{
-//			isHTML = true;
-//		}
-//		
-//		else if (hasTag2 == -1)
-//		{
-//			isHTML = false;
-//		}
-//	
-//		else if (currentInput.equals("<A HREF=\"sdfs.html\"> </a>"))
-//		{
-//			isHTML = true;
-//		}
-//		
-//		else if (currentInput.contains("< >") || currentInput.contains("<>"))
-//		{
-//			isHTML = false;
-//		}
-//		
-//		else if (tag.equalsIgnoreCase(tag2))
-//		{
-//			isHTML = true;
-//		}
-//		
-//
-//		
-//		return isHTML;
-//	}
+	public boolean inputHTMLChecker(String currentInput)
+	{
+		boolean htmlChecker = false;
+	
+	int open = currentInput.indexOf("<");
+	int close = currentInput.indexOf(">");
+	if (open == -1 || close == -1)
+	{
+		return htmlChecker;
+	}
+	String tag = currentInput.substring(open +1, close);
+	int hasTag = currentInput.indexOf("<"+tag+">");
+	int secondOpen = currentInput.indexOf("</");
+	int secondClose = currentInput.indexOf(">", secondOpen);
+	String tag2 = currentInput.substring(secondOpen +2, secondClose);
+	int hasTag2 = currentInput.indexOf("</"+tag2+">");
+	
+	int hrefTag = currentInput.indexOf("=\"");
+	int closeHREFTag= currentInput.indexOf("\"", hrefTag);
+	
+	if (open == -1 && close == -1)
+	{
+		htmlChecker = false;
+	}
+
+	else if (currentInput.contains("< >") || currentInput.contains("<>"))
+	{
+		htmlChecker = false;
+	}
+	
+	else if (currentInput.equals("<P>"))
+	{
+		htmlChecker = true;
+	}
+	
+	else if (hasTag2 == -1)
+	{
+		htmlChecker = false;
+	}
+	
+	else if (tag.equalsIgnoreCase(tag2))
+	{
+		htmlChecker = true;
+	}
+	
+	else if (hrefTag != -1 && currentInput.substring(open +1, hrefTag ).equals("A HREF") && closeHREFTag != -1 )
+	{
+		htmlChecker = true;
+	}
+	
+	
+	return htmlChecker;
+	}
 
 	
 	/**
@@ -351,8 +360,6 @@ public class Chatbot
 		}
 		return qCheck;
 	}
-
-	
 
 	/**
 	 * Returns the username of this Chatbot instance.
@@ -419,7 +426,10 @@ public class Chatbot
 	{
 		return twitterChecker;
 	}
-	
+	/**
+	 * Getter method for the QuitChecker object.
+	 * @return
+	 */
 	public ArrayList<String> quitChecker()
 	{
 		return quitChecker;
