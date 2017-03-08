@@ -1,121 +1,164 @@
 package chat.controller;
 
+import chat.model.CTECTwitter;
 import chat.model.Chatbot;
 import chat.view.ChatFrame;
-import chat.view.ChatbotViewer;
+import chat.view.ChatViewer;
 
 public class ChatController
 {
 	private Chatbot stupidBot;
-	private ChatbotViewer display;
+	private ChatViewer display;
 	private ChatFrame baseFrame;
-	private String randomTopicGenerator;
-
+	private CTECTwitter twitterBot;
+	/*
+	 * initializes data members for chatbot chatviewer and chatframe.
+	 */
 	public ChatController()
 	{
-		stupidBot = new Chatbot("Timmy");
-		display = new ChatbotViewer();
+		stupidBot = new Chatbot("stupid robot");
+		twitterBot = new CTECTwitter(this);
+		display = new ChatViewer();
 		baseFrame = new ChatFrame(this);
+		
 	}
-
+	
 	public void start()
 	{
+		
 
 	}
-
+	/*
+	 * method used for the checkers
+	 * used for the chabot to tell what the user is talking about.
+	 */
 	public String useChatbotCheckers(String input)
-
 	{
-		String checkInput = "";
-		if (!stupidBot.quitChecker(input))
+		String checkedInput = "";
+		if(!stupidBot.quitChecker(input))
 		{
+		
 			if (stupidBot.memeChecker(input))
 			{
-				checkInput += "\nYou like memes!\n";
+				checkedInput += "\nYou like dank memes! I love dank memes also!!\n ";
 			}
 			if (stupidBot.contentChecker(input))
 			{
-				checkInput += "\nYou know my seceret topic!\n";
+				checkedInput += "\nYou know my secret topic!\n";
+			}
+			if (input.equals(""))
+			{
+				checkedInput += "\n You did not type anything\n";
+			}
+
+			if (checkedInput.length() == 0)
+			{
+				checkedInput = "I have no idea what you mean about " + input;
 			}
 			if (stupidBot.politicalTopicChecker(input))
 			{
-				checkInput += "\nYou like politics";
+				checkedInput += "\nYou want to talk about politics.\n";
 			}
 			if (stupidBot.keyboardMashChecker(input))
 			{
-				checkInput += "\nThat's just mumbo jumbo";
+				checkedInput += "\nYou just mashed random things on the keyboard\n";
 			}
-			// if(stupidBot.inputHTMLChecker(input))
-			// {
-			// checkInput += "\nHTML";
-			// }
 			if (stupidBot.twitterChecker(input))
 			{
-				checkInput += "\nCool tweet ma dude";
+				checkedInput +="\nYou want to talk about twitter\n";
 			}
-			if (!stupidBot.lengthChecker(checkInput))
+			if (stupidBot.inputHTMLChecker(input))
 			{
-				checkInput = "I have no idea what you mean about " + input;
+				checkedInput += "\nYou want to talk about HTML\n";
 			}
-			int canBeRandom = (int) (Math.random() * 2);
-			if (canBeRandom % 2 == 0)
+						
+			int canBeRandom= (int) (Math.random() *2);
+			if(canBeRandom % 2 == 0)
 			{
-				checkInput += randomTopicGenerator();
+				checkedInput += randomTopicGenerator();
 			}
-
+		
 		}
 		else
 		{
-			display.displayMessage("Thanks for chatting! Talk to you soon");
+			display.displayMessage("Thanks for chatting, seeya soon!");
 			System.exit(0);
 		}
-		return checkInput;
+		
+		return checkedInput;
 	}
 
-	public ChatFrame getBaseFrame()
-	{
-		return baseFrame;
-
-	}
-
-	public Chatbot getChatbot()
-	{
-		return stupidBot;
-
-	}
-
+	/*
+	 * creates a random topic that chatbot will talk about.
+	 */
 	private String randomTopicGenerator()
 	{
 		String randomTopic = "";
 		int random = (int) (Math.random() * 7);
-
-		switch (random)
+		
+		switch(random)
 		{
 		case 0:
-			randomTopic = "Did you hear about the daft punk beastie boys mix?";
+			randomTopic = "\nDid you hear about the daft punk beastie boys mix?\n";
 			break;
 		case 1:
-			randomTopic = "can you bring me some Sriracha?";
+			randomTopic = "\nDo you play any sports?\n";
 			break;
 		case 2:
-			randomTopic = "Time for some industrial!";
+			randomTopic = "\nWriting code is lots of fun\n";
 			break;
 		case 3:
-			randomTopic = "bleh bleh";
+			randomTopic = "\nDid you hear about those new dank memes? What is your favorite meme?\n";
 			break;
 		case 4:
-			randomTopic = "RandomTopic.exe";
+			randomTopic = "\nPolitics are so crazy right now!\n";
 			break;
 		case 5:
-			randomTopic = "IDK";
+			randomTopic = "\nI really love to play lacrosse\n";
 			break;
 		case 6:
-			randomTopic = "I make memes to hide my sadness.";
+			randomTopic = "\nDo you have a twitter? What is you username or favorite hashtag?\n";
 			break;
 		default:
-			randomTopic = "hmm";
+			randomTopic = "\nThis can't be happening!!\n";
 			break;
 		}
-		return randomTopicGenerator;
+		
+		return randomTopic;
+	}
+	
+	public void handleErrors(Exception currentException)
+	{
+		display.displayMessage("An error has occured. Details provided next.");
+		display.displayMessage(currentException.getMessage());
+	}
+	
+	public void useTwitter(String text)
+	{
+		twitterBot.sendTweet(text);
+	}
+	
+	public ChatFrame getBaseFrame()
+	{
+		return baseFrame;
+	}
+	
+	public Chatbot getChatbot()
+	{
+		return stupidBot;
+	}
+	 
+	public ChatViewer getDisplay()
+	{
+		return display;
+	}
+	
+	public String searchTwitterUser(String userNameToSearch)
+	{
+		String searchResults = "The most popular word by user: " + userNameToSearch + " is ";
+		
+		searchResults += twitterBot.getMostCommonWord(userNameToSearch);
+		
+		return searchResults;
 	}
 }
