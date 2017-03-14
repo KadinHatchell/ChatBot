@@ -1,10 +1,16 @@
 package chat.controller;
 
-import chat.model.CTECTwitter;
 import chat.model.Chatbot;
-import chat.view.ChatFrame;
 import chat.view.ChatViewer;
+import chat.view.ChatFrame;
+import chat.view.ChatPanel;
+import chat.model.CTECTwitter;
 
+/**
+ * 
+ * @author Kadin Hatchell
+ *Controller class for chatBot
+ */
 public class ChatController
 {
 	private Chatbot stupidBot;
@@ -158,7 +164,8 @@ public class ChatController
 		String searchResults = "The most popular word by user: " + userNameToSearch + " is ";
 		
 		searchResults += twitterBot.getMostCommonWord(userNameToSearch);
-		
+		searchResults += "\n";
 		return searchResults;
 	}
 }
+
